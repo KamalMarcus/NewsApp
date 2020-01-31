@@ -17,8 +17,8 @@ android {
         }
     }
 
-    dataBinding{
-        enabled=true
+    dataBinding {
+        enabled = true
     }
 
     compileOptions {
@@ -41,6 +41,7 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.10.0'
@@ -48,4 +49,11 @@ dependencies {
 
     //ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+
+    //Room
+    def room_version = "2.2.3"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

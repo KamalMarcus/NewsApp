@@ -1,5 +1,9 @@
 package com.kamal.myawesomenewsapp.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,28 +13,45 @@ import com.google.gson.annotations.SerializedName;
  * +201015793659
  */
 
+@Entity(tableName = "news")
 public class NewsModel {
+    @PrimaryKey(autoGenerate = true)
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Expose
     @SerializedName("content")
     private String content;
+    @Ignore
     @Expose
     @SerializedName("publishedAt")
     private String publishedAt;
     @Expose
     @SerializedName("urlToImage")
     private String urltoimage;
+    @Ignore
     @Expose
     @SerializedName("url")
     private String url;
+    @Ignore
     @Expose
     @SerializedName("description")
     private String description;
     @Expose
     @SerializedName("title")
     private String title;
+    @Ignore
     @Expose
     @SerializedName("author")
     private String author;
+    @Ignore
     @Expose
     @SerializedName("source")
     private Source source;

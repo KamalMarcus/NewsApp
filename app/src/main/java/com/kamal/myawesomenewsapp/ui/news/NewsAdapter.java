@@ -1,14 +1,11 @@
-package com.kamal.myawesomenewsapp.ui;
+package com.kamal.myawesomenewsapp.ui.news;
 
 import android.content.Context;
-import android.database.DatabaseUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -63,8 +60,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         }
     }
 
-    public void addNewsList(List<NewsModel>newsList){
-        this.newsList.addAll(newsList); //1234567
+    public void addNewsList(List<NewsModel> newsList) {
+        this.newsList = newsList; //1234567
         notifyDataSetChanged();
     }
 }

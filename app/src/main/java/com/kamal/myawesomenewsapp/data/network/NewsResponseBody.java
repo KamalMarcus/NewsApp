@@ -1,4 +1,4 @@
-package com.kamal.myawesomenewsapp.data;
+package com.kamal.myawesomenewsapp.data.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

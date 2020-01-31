@@ -1,12 +1,13 @@
-package com.kamal.myawesomenewsapp.ui;
+package com.kamal.myawesomenewsapp.ui.news;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.kamal.myawesomenewsapp.data.ApiClient;
-import com.kamal.myawesomenewsapp.data.NewsResponseBody;
+import com.kamal.myawesomenewsapp.data.network.ApiClient;
+import com.kamal.myawesomenewsapp.data.network.NewsResponseBody;
 import com.kamal.myawesomenewsapp.model.NewsModel;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,11 +20,12 @@ import retrofit2.Response;
  * +201015793659
  */
 
-public class MainActivityViewModel extends ViewModel {
-    MutableLiveData<List<NewsModel>>newsLiveData=new MutableLiveData<>();
+public class NewsViewModel extends ViewModel {
+    MutableLiveData<List<NewsModel>> newsLiveData = new MutableLiveData<>();
 
-    public void getNews(){
-        Call<NewsResponseBody> allNews = ApiClient.getInstance().getAllNews("مصر", "2019-12-26", "publishedAt");
+    public void getNews(String searchWord) {
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        Call<NewsResponseBody> allNews = ApiClient.getInstance().getAllNews(searchWord, simpleDateFormat.format(System.currentTimeMillis()), "publishedAt");
         allNews.enqueue(new Callback<NewsResponseBody>() {
             @Override
             public void onResponse(Call<NewsResponseBody> call, Response<NewsResponseBody> response) {
@@ -32,7 +34,7 @@ public class MainActivityViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<NewsResponseBody> call, Throwable t) {
-
+                System.out.println("Error " + t.getMessage());
             }
         });
     }
