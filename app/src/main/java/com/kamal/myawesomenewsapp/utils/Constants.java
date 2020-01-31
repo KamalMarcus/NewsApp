@@ -10,4 +10,5 @@ public class Constants {
     public static final  String INTENT_SEARCH_WORD="searchWord";
     public static final  String INTENT_SEARCH_WORD_Two="searchWord";
     public static final  String INTENT_SEARCH_WORD_Three="searchWord";
+     public static final  String INTENT_SEARCH_WORD_Four="searchWord";
 }
