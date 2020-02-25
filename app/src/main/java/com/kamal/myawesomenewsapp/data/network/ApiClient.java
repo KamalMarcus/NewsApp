@@ -1,9 +1,11 @@
 package com.kamal.myawesomenewsapp.data.network;
 
+import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -26,6 +28,7 @@ public class ApiClient {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build();
 
@@ -38,7 +41,7 @@ public class ApiClient {
         return instance;
     }
 
-    public Call<NewsResponseBody> getAllNews(String search, String fromDate, String sortBy) {
+    public Observable<NewsResponseBody> getAllNews(String search, String fromDate, String sortBy) {
         return apiInterface.getNews(search, fromDate, sortBy, "a5ec0bbbc5cc463c835884804301dec2");
     }
 }

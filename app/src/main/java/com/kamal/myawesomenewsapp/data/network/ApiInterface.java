@@ -1,5 +1,6 @@
 package com.kamal.myawesomenewsapp.data.network;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,5 +13,5 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("everything")
-    Call<NewsResponseBody>getNews(@Query("q")String search,@Query("from")String fromDate,@Query("sortBy")String sortBy,@Query("apiKey")String apiKey);
+    Observable<NewsResponseBody> getNews(@Query("q")String search, @Query("from")String fromDate, @Query("sortBy")String sortBy, @Query("apiKey")String apiKey);
 }
